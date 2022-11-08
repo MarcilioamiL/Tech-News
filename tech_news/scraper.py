@@ -17,7 +17,10 @@ def fetch(url, timeout=1):
 
 # Requisito 2
 def scrape_novidades(html_content):
-    """Seu código deve vir aqui"""
+    base_url = Selector(html_content)
+    return (
+        base_url.css('h2.entry-title > a::attr(href)').getall()
+    )
 
 
 # Requisito 3
