@@ -41,6 +41,7 @@ def scrape_noticia(html_content):
         "tags": selector.css("a[rel='tag']::text").getall(),
         "timestamp": selector.css("li.meta-date::text").get(),
         "title": (selector.css("h1.entry-title::text").get()).strip(),
+        "url": selector.css("link[rel=canonical]::attr(href)").get(),
 
     }
 
