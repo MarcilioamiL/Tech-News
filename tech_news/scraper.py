@@ -33,6 +33,11 @@ def scrape_noticia(html_content):
     return {
         "category": selector.css("div.entry-details span.label::text").get(),
         "comments_count": len(selector.css("ol.comment-list::text").getall()),
+        "summary": (
+            selector.xpath("string(//div[@class='entry-content']//p[1])")
+            .get()
+            .strip()
+        ),
 
     }
 
