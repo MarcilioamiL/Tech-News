@@ -39,6 +39,7 @@ def scrape_noticia(html_content):
             .strip()
         ),
         "tags": selector.css("a[rel='tag']::text").getall(),
+        "timestamp": selector.css("li.meta-date::text").get(),
 
     }
 
