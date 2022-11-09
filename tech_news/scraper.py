@@ -38,6 +38,7 @@ def scrape_noticia(html_content):
             .get()
             .strip()
         ),
+        "tags": selector.css("a[rel='tag']::text").getall(),
 
     }
 
