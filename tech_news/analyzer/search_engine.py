@@ -32,7 +32,10 @@ def search_by_date(date):
 
 # Requisito 8
 def search_by_tag(tag):
-
+    news = search_news(
+        {"tags": {"$regex": tag, "$options": "i"}}
+    )
+    return new_forma(news)
 
 
 # Requisito 9
