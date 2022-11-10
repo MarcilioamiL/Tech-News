@@ -1,5 +1,6 @@
 from tech_news.database import search_news
 
+from datetime import datetime
 
 
 def new_forma(new_forma):
@@ -18,7 +19,15 @@ def search_by_title(title):
 
 # Requisito 7
 def search_by_date(date):
-
+    try:
+        datetime.fromisoformat(date)
+    except ValueError:
+        raise ValueError("Data inválida")
+    pattern = date[8:10]+'/'+date[5:7]+'/'+date[:4]
+    news = search_news(
+        {"timestamp": {"$regex": pattern, "$options": "i"}}
+    )
+    return new_forma(news)
 
 
 # Requisito 8
